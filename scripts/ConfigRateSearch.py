@@ -1,7 +1,7 @@
 {
     AFWConst.Name: "PageRateSearch",
     AFWConst.Type: AFWConst.WebPage,
-    AFWConst.BreakTime: 2000,
+    AFWConst.BreakTime: 20000, # Give time for proxy setting
     AFWConst.SubUI: [
     {
         AFWConst.Name: "InputStartDate",
@@ -12,6 +12,11 @@
         AFWConst.Name: "InputEndDate",
         AFWConst.Type: AFWConst.WebEditBox,
         AFWConst.AttrID: "nothing"
+    },
+    {
+        AFWConst.Name: "ComboboxCurrency",
+        AFWConst.Type: AFWConst.WebCombobox,
+        AFWConst.AttrID: "pjname"
     },
     {
         AFWConst.Name: "BtnSearch",
