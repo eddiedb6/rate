@@ -1,22 +1,22 @@
 def SearchRate(browser, date, currency):
     currencyMap = {
-        "GBP": "1314", # Britain Pound
-        "HKD": "1315", # Hong Kong Dollar
-        "USD": "1316", # US Dollar
-        "SGD": "1375", # Singapore Dollar
-        "JPY": "1323", # Japan Yen
-        "CAD": "1324", # Canada Dollar
-        "AUD": "1325", # Australia Dollar
-        "EUR": "1326", # Euro
-        "MOP": "1327", # Macau Pataca
-        "PHP": "1328", # Philippines Peso
-        "THB": "1329", # Thailand Baht
-        "NZD": "1330", # New Zealand Dollar
-        "KRW": "1331", # Korea Won
-        "RUR": "1843", # Russia Ruble
-        "MYR": "2890", # Malaysia Ringgit
-        "TWD": "2895", # Taiwan Dollar
-        "IDR": "3030"  # Indonesia Rupiah
+        7: "1314", # Britain Pound
+        12: "1315", # Hong Kong Dollar
+        2: "1316", # US Dollar
+        17: "1375", # Singapore Dollar
+        4: "1323", # Japan Yen
+        8: "1324", # Canada Dollar
+        9: "1325", # Australia Dollar
+        3: "1326", # Euro
+        18: "1327", # Macau Pataca
+        16: "1328", # Philippines Peso
+        6: "1329", # Thailand Baht
+        10: "1330", # New Zealand Dollar
+        5: "1331", # Korea Won
+        11: "1843", # Russia Ruble
+        15: "2890", # Malaysia Ringgit
+        13: "2895", # Taiwan Dollar
+        14: "3030"  # Indonesia Rupiah
     }
     
     page = browser.FindSubUI("PageRateSearch")
