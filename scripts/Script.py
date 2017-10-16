@@ -28,11 +28,10 @@ rates = FetchExchangeRateForUpdateFromDB()
 #    "currency": "EUR"
 #}]
 
-print(rates)
-
 # Open browser
 browser = afw.OpenWebBrowser("Browser")
 
+# Fetch each rate from network
 isFirstOpen = True
 for rate in rates:
      # Open page
@@ -43,16 +42,16 @@ for rate in rates:
         time.sleep(8)
         isFirstOpen = False
     else:
-        time.sleep(3)
+        time.sleep(5)
 
     if not SearchRate(browser, rate["date"], rate["currency"]):
         break
 
-    time.sleep(3)
+    time.sleep(5)
     rateString = FetchRate(browser)
 
     if rateString is not None:
         rate["rate"] = float(rateString)
 
-print(rates)
-
+UpdateExchangeRateToDB(rates)
+    
