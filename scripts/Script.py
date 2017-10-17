@@ -7,51 +7,52 @@ sys.path.append(os.path.join(os.path.split(os.path.realpath(__file__))[0], "../.
 sys.path.append(os.path.join(os.path.split(os.path.realpath(__file__))[0], "../../util"))
 sys.path.append(os.path.join(os.path.split(os.path.realpath(__file__))[0], "../.."))
 
+from RateConfig import *
 from ScriptRateSearch import *
 from ScriptRateFetch import *
-
 from DBUtil import *
 
 # {
 #     "date": "2016-09-01",
-#     "currency": "USD",
+#     "currency": 2,
 #     "rate": 660
 # }
 rates = FetchExchangeRateForUpdateFromDB()
-#[
-#{
-#    "date": "2016-09-01",
-#    "currency": "USD"
-#},
-#{
-#    "date": "2017-09-01",
-#    "currency": "EUR"
-#}]
 
 # Open browser
 browser = afw.OpenWebBrowser("Browser")
 
 # Fetch each rate from network
-isFirstOpen = True
 for rate in rates:
      # Open page
     if not browser.OpenURL("URLRate"):
         break
 
-    if isFirstOpen:
-        time.sleep(8)
-        isFirstOpen = False
-    else:
-        time.sleep(5)
-
+    time.sleep(SleepSeconds)
     if not SearchRate(browser, rate["date"], rate["currency"]):
         break
 
-    time.sleep(5)
+    time.sleep(SleepSeconds)
     rateString = FetchRate(browser)
 
     if rateString is not None:
         rate["rate"] = float(rateString)
 
+browser.Quit()
+
 UpdateExchangeRateToDB(rates)
+
+# Report
+failedRates = []
+print("")
+for rate in rates:
+    if "rate" in rate:
+        print("Get rate: " + str(rate["rate"]) + ", " + rate["date"] + ", " + str(rate["currency"]))
+    else:
+        failedRates.append(rate)
+print("")
+for rate in failedRates:
+    print("Failed to get rate: " + rate["date"] + ", " + str(rate["currency"]))
+            
+
     

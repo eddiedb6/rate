@@ -1,3 +1,5 @@
+from RateConfig import *
+
 def SearchRate(browser, date, currency):
     currencyMap = {
         7: "1314", # Britain Pound
@@ -21,7 +23,14 @@ def SearchRate(browser, date, currency):
     
     page = browser.FindSubUI("PageRateSearch")
 
-    startDate = page.TryToFindSubUI("InputStartDate")
+    startDate = None
+    count = RetryCount
+    while count > 0:
+        startDate = page.TryToFindSubUI("InputStartDate")
+        if startDate is not None:
+            break
+        count -= 1
+        
     if startDate is None:
         print("Could not find start date input")
         return False

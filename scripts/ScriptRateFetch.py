@@ -1,7 +1,16 @@
+from RateConfig import *
+
 def FetchRate(browser):
     page = browser.FindSubUI("PageRateResult")
 
-    rateTable = page.TryToFindSubUI("TableResult")
+    rateTable = None
+    count = RetryCount
+    while count > 0:
+        rateTable = page.TryToFindSubUI("TableResult")
+        if rateTable is not None:
+            break
+        count -= 1
+        
     if rateTable is None:
         print("Could not find rate table")
         return
