@@ -6,4 +6,6 @@ DBPassword = "dbpassword"
 DBName = "dbratedbname"
 SleepSeconds = 3
 RetryCount = 3
+ImportPath = ""
+ExportPath = ""
 ### Credential config end ###

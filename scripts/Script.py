@@ -11,13 +11,18 @@ from RateConfig import *
 from ScriptRateSearch import *
 from ScriptRateFetch import *
 from DBUtil import *
+from DumpUtil import *
 
 # {
 #     "date": "2016-09-01",
 #     "currency": 2,
 #     "rate": 660
 # }
-rates = FetchExchangeRateForUpdateFromDB()
+rates = []
+if ImportPath == "":
+    rates = FetchExchangeRateForUpdateFromDB()
+else:
+    rates = FetchExchangeRateForUpdateFromFile()
 
 # Open browser
 browser = afw.OpenWebBrowser("Browser")
@@ -40,7 +45,10 @@ for rate in rates:
 
 browser.Quit()
 
-UpdateExchangeRateToDB(rates)
+if ExportPath == "":
+    UpdateExchangeRateToDB(rates)
+else:
+    UpdateExchangeRateToFile(rates)
 
 # Report
 failedRates = []
