@@ -5,7 +5,7 @@
         AFWConst.SubUI: [
         {
             AFWConst.Name: "Browser",
-            AFWConst.Type: AFWConst.UIWeb,
+            AFWConst.Type: AFWConst.UIBrowser,
             AFWConst.Plugin: {
                 AFWConst.PluginName: AFWConst.PluginSelenium
 #                AFWConst.PluginName: AFWConst.PluginProxyWeb,
@@ -19,7 +19,7 @@
             AFWConst.SubUI: [
             {
                 AFWConst.Name: "URLRate",
-                AFWConst.Type: AFWConst.WebEntry,
+                AFWConst.Type: AFWConst.UIWebEntry,
                 AFWConst.URL: "http://www.boc.cn/sourcedb/whpj",
                 AFWConst.BreakTime: 1000,
                 AFWConst.SubUI: [

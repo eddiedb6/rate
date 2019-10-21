@@ -34,13 +34,13 @@ def SearchRate(browser, date, currency):
     if startDate is None:
         print("Could not find start date input")
         return False
-    startDate.InputText(date)
+    startDate.Input(date)
     
     endDate = page.TryToFindSubUI("InputEndDate")
     if endDate is None:
         print("Could not find end date input")
         return False
-    endDate.InputText(date)
+    endDate.Input(date)
 
     currencyCombo = page.TryToFindSubUI("ComboboxCurrency")
     if currencyCombo is None:
